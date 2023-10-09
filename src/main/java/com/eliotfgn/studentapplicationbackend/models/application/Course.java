@@ -2,18 +2,13 @@ package com.eliotfgn.studentapplicationbackend.models.application;
 
 import com.eliotfgn.studentapplicationbackend.models.BaseEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-
-import java.util.List;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-public class University extends BaseEntity {
+public class Course extends BaseEntity {
     private String name;
-    @OneToMany
-    private List<Course> courses;
-
-    public University() {
-    }
+    @ManyToOne
+    private University university;
 
     public String getName() {
         return name;
@@ -23,11 +18,11 @@ public class University extends BaseEntity {
         this.name = name;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public University getUniversity() {
+        return university;
     }
 
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void setUniversity(University university) {
+        this.university = university;
     }
 }
