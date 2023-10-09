@@ -2,11 +2,15 @@ package com.eliotfgn.studentapplicationbackend.models.user;
 
 
 import com.eliotfgn.studentapplicationbackend.models.BaseEntity;
+import com.eliotfgn.studentapplicationbackend.models.application.Application;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 @Entity
 public class User extends BaseEntity {
@@ -19,6 +23,8 @@ public class User extends BaseEntity {
     private String password;
     private String firstname;
     private String lastname;
+    @OneToMany
+    private List<Application> applications;
 
     public User() {
     }
@@ -60,5 +66,13 @@ public class User extends BaseEntity {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public List<Application> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(List<Application> applications) {
+        this.applications = applications;
     }
 }
