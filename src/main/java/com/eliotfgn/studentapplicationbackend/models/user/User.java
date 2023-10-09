@@ -3,9 +3,7 @@ package com.eliotfgn.studentapplicationbackend.models.user;
 
 import com.eliotfgn.studentapplicationbackend.models.BaseEntity;
 import com.eliotfgn.studentapplicationbackend.models.application.Application;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -25,6 +23,8 @@ public class User extends BaseEntity {
     private String lastname;
     @OneToMany
     private List<Application> applications;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     public User() {
     }
@@ -74,5 +74,13 @@ public class User extends BaseEntity {
 
     public void setApplications(List<Application> applications) {
         this.applications = applications;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
