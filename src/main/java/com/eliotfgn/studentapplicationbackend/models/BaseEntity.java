@@ -4,20 +4,19 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @MappedSuperclass
 public abstract class BaseEntity {
     @Id
-    private UUID id;
+    private Long id;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
