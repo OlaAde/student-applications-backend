@@ -11,6 +11,7 @@ import jakarta.validation.constraints.Size;
 import java.util.List;
 
 @Entity
+@Table(name = "user_accounts")
 public class User extends BaseEntity {
     @Column(unique = true)
     @NotBlank(message = "Email is required.")
