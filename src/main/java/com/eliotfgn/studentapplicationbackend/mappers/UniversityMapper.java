@@ -16,4 +16,19 @@ public class UniversityMapper {
 
         return dto;
     }
+
+    public University mapToEntity(UniversityDto dto) {
+        if(dto == null) {
+            return null;
+        }
+
+        University entity = new University();
+
+        entity.setName(dto.getName());
+        entity.setId(dto.getId());
+        entity.setCreatedAt(dto.getCreatedAt());
+        entity.setUpdatedAt(dto.getUpdatedAt());
+
+        return entity;
+    }
 }
