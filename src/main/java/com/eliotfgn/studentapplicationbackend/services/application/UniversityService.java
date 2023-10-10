@@ -3,6 +3,7 @@ package com.eliotfgn.studentapplicationbackend.services.application;
 import com.eliotfgn.studentapplicationbackend.dto.UniversityDto;
 import com.eliotfgn.studentapplicationbackend.exceptions.application.UniversityNotFoundException;
 import com.eliotfgn.studentapplicationbackend.mappers.UniversityMapper;
+import com.eliotfgn.studentapplicationbackend.models.application.Course;
 import com.eliotfgn.studentapplicationbackend.models.application.University;
 import com.eliotfgn.studentapplicationbackend.repositories.UniversityRepository;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,12 @@ public class UniversityService {
         return universityMapper.mapToDto(university);
     }
 
+    public University getEntityById(Long id) {
+        University university = universityRepository.findById(id).orElseThrow(() -> new UniversityNotFoundException("University with id " + id + " not found"));
+
+        return university;
+    }
+
     public List<UniversityDto> getAll() {
         List<University> universities = universityRepository.findAll();
 
@@ -59,5 +66,13 @@ public class UniversityService {
         universityRepository.delete(university);
 
         return true;
+    }
+
+    public void addCourse(Long id, Course course) {
+        University university = getEntityById(id);
+
+        university.getCourses().add(course);
+
+        universityRepository.save(university);
     }
 }

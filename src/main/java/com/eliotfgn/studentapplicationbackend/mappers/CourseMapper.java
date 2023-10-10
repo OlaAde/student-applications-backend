@@ -18,4 +18,16 @@ public class CourseMapper {
 
         return dto;
     }
+
+    public Course mapToEntity(CourseDto dto) {
+        Course entity = new Course();
+
+        entity.setName(dto.getName());
+        entity.setId(dto.getId());
+        entity.setCreatedAt(dto.getCreatedAt());
+        entity.setUpdatedAt(dto.getUpdatedAt());
+        entity.setUniversity(universityMapper.mapToEntity(dto.getUniversity()));
+
+        return entity;
+    }
 }
