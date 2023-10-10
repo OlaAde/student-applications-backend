@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://ep-mute-silence-31270512.us-east-2.aws.neon.tech/student-applications
+    username: eliotfgn
+    password: 6KF2YXkPDyRU
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  devtools:
+    livereload:
+      enabled: true
+server:
+  port: 8181
+
+app:
+  jwt:
+    secret: drYzesC6JMn+tJhJZuV2+l4cp8FX8NlUlwAF9oQg/hd7bSzbsTrPvbSIT01GEtGQhleX2sUySwn2iml//diKkfwZ9DH+6822yWXMTog4C6X4mAzUpCLvSx6GAH3c6k78EVMNVVcuIyN+REgUWtbxCre6+ZcxEFXvXeKpX886wR9dnW3kiDua5Cbc/Q6Zyj6DqdCLoWwJAmfzmYrAgClZRTvSd9xOA5qgIo2bYRzchHrGRi2nopa/tP8cX0cHtYonEwRmwe+vxfMmn9f/rPEyrXv3fDelplvF6ahswWdBGMDl8oHp75LY+6iuYcavb5DvGc5t6Iuu5gudb475CSNpVW8R5kQqsjGJXlebdUMTzO0=
+    expiration: 86400000
