@@ -3,12 +3,14 @@ package com.eliotfgn.studentapplicationbackend.services.user;
 import com.eliotfgn.studentapplicationbackend.dto.UserDto;
 import com.eliotfgn.studentapplicationbackend.exceptions.user.UserNotFoundException;
 import com.eliotfgn.studentapplicationbackend.mappers.UserMapper;
+import com.eliotfgn.studentapplicationbackend.models.application.Application;
 import com.eliotfgn.studentapplicationbackend.models.user.Role;
 import com.eliotfgn.studentapplicationbackend.models.user.User;
 import com.eliotfgn.studentapplicationbackend.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,6 +28,7 @@ public class UserService {
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
         user.setRole(Role.ROLE_STUDENT);
+        user.setApplications(new ArrayList<>());
 
         User savedUser = userRepository.save(user);
 
@@ -50,6 +53,12 @@ public class UserService {
         return userMapper.mapToDto(user);
     }
 
+    public User getEntityById(Long id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with id " + id + " not found"));
+
+        return user;
+    }
+
     public UserDto update(Long id, UserDto dto) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with id " + id + " not found"));
 
@@ -70,5 +79,13 @@ public class UserService {
         userRepository.delete(user);
 
         return true;
+    }
+
+    public void addApplication(Long id, Application application) {
+        User user = getEntityById(id);
+
+        user.getApplications().add(application);
+
+        userRepository.save(user);
     }
 }
