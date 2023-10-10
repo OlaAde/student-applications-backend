@@ -13,7 +13,7 @@ public class CourseMapper {
         this.universityMapper = universityMapper;
     }
 
-    private CourseDto mapToDto(Course entity) {
+    public CourseDto mapToDto(Course entity) {
         CourseDto dto = new CourseDto(entity.getId(), entity.getCreatedAt(), entity.getUpdatedAt(), entity.getName(), universityMapper.mapToDto(entity.getUniversity()));
 
         return dto;
