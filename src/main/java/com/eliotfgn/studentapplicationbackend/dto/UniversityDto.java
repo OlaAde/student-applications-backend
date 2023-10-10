@@ -16,14 +16,12 @@ public class UniversityDto implements Serializable {
     private final LocalDateTime updatedAt;
     @NotBlank(message = "The university name should be given.")
     private final String name;
-    private final List<CourseDto> courses;
 
-    public UniversityDto(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, String name, List<CourseDto> courses) {
+    public UniversityDto(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, String name) {
         this.id = id;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.name = name;
-        this.courses = courses;
     }
 
     public Long getId() {
@@ -42,9 +40,6 @@ public class UniversityDto implements Serializable {
         return name;
     }
 
-    public List<CourseDto> getCourses() {
-        return courses;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -54,13 +49,12 @@ public class UniversityDto implements Serializable {
         return Objects.equals(this.id, entity.id) &&
                 Objects.equals(this.createdAt, entity.createdAt) &&
                 Objects.equals(this.updatedAt, entity.updatedAt) &&
-                Objects.equals(this.name, entity.name) &&
-                Objects.equals(this.courses, entity.courses);
+                Objects.equals(this.name, entity.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, createdAt, updatedAt, name, courses);
+        return Objects.hash(id, createdAt, updatedAt, name);
     }
 
     @Override
@@ -69,7 +63,6 @@ public class UniversityDto implements Serializable {
                 "id = " + id + ", " +
                 "createdAt = " + createdAt + ", " +
                 "updatedAt = " + updatedAt + ", " +
-                "name = " + name + ", " +
-                "courses = " + courses + ")";
+                "name = " + name + ")";
     }
 }
