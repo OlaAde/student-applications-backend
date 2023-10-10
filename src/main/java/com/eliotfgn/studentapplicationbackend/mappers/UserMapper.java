@@ -15,9 +15,9 @@ public class UserMapper {
     public User mapToEntity(UserDto dto) {
         User user = new User();
 
-        user.setEmail(user.getEmail());
+        user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
-        user.setFirstname(user.getFirstname());
+        user.setFirstname(dto.getFirstname());
         user.setLastname(dto.getLastname());
 
         return user;
