@@ -1,5 +1,6 @@
 package com.eliotfgn.studentapplicationbackend.controllers.user;
 
+import com.eliotfgn.studentapplicationbackend.dto.CreateUserDto;
 import com.eliotfgn.studentapplicationbackend.dto.UserDto;
 import com.eliotfgn.studentapplicationbackend.dto.response.ResourceResponse;
 import com.eliotfgn.studentapplicationbackend.services.user.UserService;
@@ -28,7 +29,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResourceResponse<UserDto>> update(@PathVariable Long id, @RequestBody UserDto dto) {
+    public ResponseEntity<ResourceResponse<UserDto>> update(@PathVariable Long id, @RequestBody CreateUserDto dto) {
         return ResponseEntity.ok(new ResourceResponse<>(true, userService.update(id, dto)));
     }
 

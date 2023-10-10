@@ -1,5 +1,6 @@
 package com.eliotfgn.studentapplicationbackend.controllers.user;
 
+import com.eliotfgn.studentapplicationbackend.dto.CreateUserDto;
 import com.eliotfgn.studentapplicationbackend.dto.UserDto;
 import com.eliotfgn.studentapplicationbackend.dto.request.LoginRequest;
 import com.eliotfgn.studentapplicationbackend.dto.response.AuthenticationResponse;
@@ -22,7 +23,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<ResourceResponse<AuthenticationResponse>> register(@RequestBody @Valid UserDto payload) {
+    public ResponseEntity<ResourceResponse<AuthenticationResponse>> register(@RequestBody @Valid CreateUserDto payload) {
         ResourceResponse<AuthenticationResponse> response;
         AuthenticationResponse authResponse = authService.register(payload);
 

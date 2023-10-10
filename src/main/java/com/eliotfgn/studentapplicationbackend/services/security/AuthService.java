@@ -1,5 +1,6 @@
 package com.eliotfgn.studentapplicationbackend.services.security;
 
+import com.eliotfgn.studentapplicationbackend.dto.CreateUserDto;
 import com.eliotfgn.studentapplicationbackend.dto.UserDto;
 import com.eliotfgn.studentapplicationbackend.dto.request.LoginRequest;
 import com.eliotfgn.studentapplicationbackend.dto.response.AuthenticationResponse;
@@ -30,7 +31,7 @@ public class AuthService {
         this.userDetailsService = userDetailsService;
     }
 
-    public AuthenticationResponse register(UserDto payload) {
+    public AuthenticationResponse register(CreateUserDto payload) {
         payload.setPassword(passwordEncoder.encode(payload.getPassword()));
         UserDto user = userService.create(payload);
         String token = jwtService.generateToken(user.getEmail());

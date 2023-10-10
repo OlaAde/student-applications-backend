@@ -1,5 +1,6 @@
 package com.eliotfgn.studentapplicationbackend.services.user;
 
+import com.eliotfgn.studentapplicationbackend.dto.CreateUserDto;
 import com.eliotfgn.studentapplicationbackend.dto.UserDto;
 import com.eliotfgn.studentapplicationbackend.exceptions.user.UserNotFoundException;
 import com.eliotfgn.studentapplicationbackend.mappers.UserMapper;
@@ -23,7 +24,7 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public UserDto create(UserDto dto) {
+    public UserDto create(CreateUserDto dto) {
         User user = userMapper.mapToEntity(dto);
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
@@ -65,7 +66,7 @@ public class UserService {
         return user;
     }
 
-    public UserDto update(Long id, UserDto dto) {
+    public UserDto update(Long id, CreateUserDto dto) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User with id " + id + " not found"));
 
         user.setEmail(dto.getEmail());
