@@ -9,6 +9,7 @@ import com.eliotfgn.studentapplicationbackend.repositories.UniversityRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,6 +26,7 @@ public class UniversityService {
         University university = universityMapper.mapToEntity(dto);
         university.setCreatedAt(LocalDateTime.now());
         university.setUpdatedAt(LocalDateTime.now());
+        university.setCourses(new ArrayList<>());
 
         University savedUniversity = universityRepository.save(university);
 
