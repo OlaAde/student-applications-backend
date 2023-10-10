@@ -14,18 +14,18 @@ import java.util.Objects;
  * DTO for {@link User}
  */
 public class UserDto implements Serializable {
-    private final Long id;
-    private final LocalDateTime createdAt;
-    private final LocalDateTime updatedAt;
+    private Long id;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     @Email(message = "Email must be valid.")
     @NotBlank(message = "Email is required.")
     private final String email;
     @Size(message = "Password must be at least 8 characters long.", min = 8)
     @NotBlank(message = "Password is required.")
-    private final String password;
-    private final String firstname;
-    private final String lastname;
-    private final Role role;
+    private String password;
+    private String firstname;
+    private String lastname;
+    private Role role;
 
     public UserDto(Long id, LocalDateTime createdAt, LocalDateTime updatedAt, String email, String password, String firstname, String lastname, Role role) {
         this.id = id;
@@ -68,6 +68,34 @@ public class UserDto implements Serializable {
 
     public Role getRole() {
         return role;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
