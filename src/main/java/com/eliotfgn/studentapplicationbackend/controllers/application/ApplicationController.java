@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin(origins = "*")
 public class ApplicationController {
     private final ApplicationService applicationService;
 
@@ -18,7 +19,7 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
-    @PostMapping("/applications/")
+    @PostMapping("/applications")
     public ResponseEntity<ResourceResponse<ApplicationDto>> create(@RequestBody CreateApplicationDto dto) {
         return ResponseEntity.ok(new ResourceResponse<>(true, applicationService.create(dto)));
     }

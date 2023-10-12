@@ -2,6 +2,8 @@ package com.eliotfgn.studentapplicationbackend.advices;
 
 import com.eliotfgn.studentapplicationbackend.dto.response.ErrorResponse;
 import com.eliotfgn.studentapplicationbackend.dto.response.InvalidBodyResponse;
+import com.eliotfgn.studentapplicationbackend.exceptions.user.UserNotFoundException;
+import io.jsonwebtoken.security.SignatureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -39,5 +41,24 @@ public class DefaultExceptionHandler {
                         .map(error -> Map.entry(error.getField(), error.getDefaultMessage()))
                         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
         );
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handleUserNotFound(UserNotFoundException e, WebRequest request) {
+        return new ErrorResponse(false, 404, e.getMessage(), request.getDescription(false));
+    }
+
+    @ExceptionHandler(SignatureException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorResponse handleJwtException(SignatureException e, WebRequest request) {
+        return new ErrorResponse(false, 401, e.getMessage(), request.getDescription(false));
+    }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorResponse handleJwtMalformedException(Exception e, WebRequest request) {
+        System.out.println("Handling");
+        return new ErrorResponse(false, 401, e.getMessage(), request.getDescription(false));
     }
 }

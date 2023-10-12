@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin(origins = "*")
 public class CourseController {
     private final CourseService courseService;
 
@@ -45,6 +46,7 @@ public class CourseController {
 
     @GetMapping("/university/{id}/courses")
     public ResponseEntity<ResourceResponse<List<CourseDto>>> getAllByUniversityId(@PathVariable Long id) {
+        System.out.println("Getting request");
         return ResponseEntity.ok(new ResourceResponse<>(true, courseService.getAllByUniversityId(id)));
     }
 }
