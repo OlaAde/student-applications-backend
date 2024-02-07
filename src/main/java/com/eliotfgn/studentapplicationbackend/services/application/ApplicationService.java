@@ -4,7 +4,6 @@ import com.eliotfgn.studentapplicationbackend.dto.ApplicationDto;
 import com.eliotfgn.studentapplicationbackend.dto.CreateApplicationDto;
 import com.eliotfgn.studentapplicationbackend.mappers.ApplicationMapper;
 import com.eliotfgn.studentapplicationbackend.models.application.Application;
-import com.eliotfgn.studentapplicationbackend.models.user.User;
 import com.eliotfgn.studentapplicationbackend.repositories.ApplicationRepository;
 import com.eliotfgn.studentapplicationbackend.services.user.UserService;
 import org.springframework.stereotype.Service;

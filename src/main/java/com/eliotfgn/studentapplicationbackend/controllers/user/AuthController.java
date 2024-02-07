@@ -1,7 +1,6 @@
 package com.eliotfgn.studentapplicationbackend.controllers.user;
 
 import com.eliotfgn.studentapplicationbackend.dto.CreateUserDto;
-import com.eliotfgn.studentapplicationbackend.dto.UserDto;
 import com.eliotfgn.studentapplicationbackend.dto.request.LoginRequest;
 import com.eliotfgn.studentapplicationbackend.dto.response.AuthenticationResponse;
 import com.eliotfgn.studentapplicationbackend.dto.response.ResourceResponse;

@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class CreateCourseDto implements Serializable {
     private String name;
     private Long universityId;
+    private String universityName;
 
     public String getName() {
         return name;
@@ -20,5 +21,13 @@ public class CreateCourseDto implements Serializable {
 
     public void setUniversityId(Long universityId) {
         this.universityId = universityId;
+    }
+
+    public String getUniversityName() {
+        return universityName;
+    }
+
+    public void setUniversityName(String universityName) {
+        this.universityName = universityName;
     }
 }
